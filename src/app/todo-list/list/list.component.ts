@@ -1,29 +1,5 @@
 import { Component } from '@angular/core';
-import { v4 } from 'uuid';
-
-interface ITodoItem {
-  id: string;
-  title: string;
-  completed: boolean;
-}
-
-const mockData: Array<ITodoItem> = [
-  {
-    id: v4(),
-    title: 'First item',
-    completed: true,
-  },
-  {
-    id: v4(),
-    title: 'Second item',
-    completed: false,
-  },
-  {
-    id: v4(),
-    title: 'Third item',
-    completed: false,
-  }
-];
+import { TodoListService } from 'app/services/todo-list.service';
 
 @Component({
   selector: 'app-list',
@@ -31,5 +7,5 @@ const mockData: Array<ITodoItem> = [
   styleUrls: ['./list.component.sass']
 })
 export class ListComponent {
-  todoList = mockData;
+  constructor(private todoListService: TodoListService) {}
 }

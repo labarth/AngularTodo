@@ -1,11 +1,11 @@
 <ul [ngClass]="'list'">
-  <li *ngFor="let todo of todoList" [ngClass]="'list-item'">
+  <li *ngFor="let todo of todoListService.list" [ngClass]="'list-item'">
     <div>
-      <input id="{{todo.id}}" type="checkbox" [checked]="todo.completed">
+      <input id="{{todo.id}}" type="checkbox" [checked]="todo.completed" (change)="todoListService.todoCheck(todo.id)">
       <label for="{{todo.id}}" [ngStyle]="todo.completed && {textDecoration: 'line-through'}">
         {{todo.title}}
       </label>
     </div>
-    <div [ngClass]="'icon'">🗑</div>
+    <div [ngClass]="'icon'" (click)="todoListService.deleteTodo(todo.id)">🗑</div>
   </li>
 </ul>
